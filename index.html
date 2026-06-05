@@ -554,73 +554,136 @@
             font-weight: 500;
         }
 
-        .cta-btn-wrap {
-            text-align: right;
-            flex-shrink: 0;
+        /* ─── АДАПТИВ (только screen — печать/PDF не затрагивается) ─── */
+        @media screen and (max-width: 1024px) {
+            .header {
+                padding: 32px 28px 28px;
+            }
+
+            .stats-strip {
+                padding: 16px 28px;
+            }
+
+            .body {
+                padding: 28px 28px 32px;
+            }
+
+            .cta-footer {
+                padding: 22px 28px;
+            }
+
+            .hero-title {
+                font-size: 30px;
+            }
         }
 
-        .cta-btn {
-            display: inline-block;
-            background: var(--blue);
-            color: var(--white);
-            font-family: 'Onest', sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            padding: 14px 28px;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: background .2s;
-            cursor: pointer;
+        @media screen and (max-width: 860px) {
+            .modules {
+                grid-template-columns: 1fr;
+            }
+
+            /* stats: flex с разделителями → сетка с переносом */
+            .stats-strip {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 14px 12px;
+            }
+
+            .stat+.stat::before {
+                display: none;
+            }
+
+            .stat-val {
+                font-size: 19px;
+            }
         }
 
-        .cta-btn:hover {
-            background: #1A46C0;
+        @media screen and (max-width: 720px) {
+            .pg-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-footer {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .contact-links {
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 26px;
+            }
+
+            .hero-sub {
+                font-size: 13px;
+            }
         }
 
-        .cta-sub {
-            font-size: 10px;
-            color: var(--muted);
-            margin-top: 6px;
-            text-align: center;
-        }
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 16px 8px;
+            }
 
-        /* ─── PRINT BUTTON ─── */
-        .print-bar {
-            text-align: center;
-            padding: 18px 0 0;
-        }
+            .header {
+                padding: 24px 18px 22px;
+            }
 
-        .print-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--navy);
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-family: 'Manrope', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity .2s;
-        }
+            .header-top {
+                flex-direction: column;
+                gap: 12px;
+            }
 
-        .print-btn:hover {
-            opacity: .85;
+            .badge {
+                align-self: flex-start;
+            }
+
+            .stats-strip {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 16px 18px;
+            }
+
+            .body {
+                padding: 22px 16px 24px;
+            }
+
+            .cta-footer {
+                padding: 20px 16px;
+            }
+
+            .hero-title {
+                font-size: 23px;
+            }
+
+            .price-row {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .price-block {
+                padding: 18px 18px;
+            }
+
+            .why-block {
+                padding: 16px 14px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="print-bar no-print">
-        <button class="print-btn" onclick="window.print()">
-            🖨 Сохранить как PDF / Распечатать
-        </button>
-    </div>
-
-    <div style="height:16px" class="no-print"></div>
 
     <div class="page">
 
@@ -841,10 +904,6 @@
                     <span class="contact-link">💬 Telegram: @s_migin</span>
                     <span class="contact-link">🌐 globus-ltd.com</span>
                 </div>
-            </div>
-            <div class="cta-btn-wrap">
-                <div class="cta-btn">Договориться о созвоне →</div>
-                <div class="cta-sub">30 минут · Без обязательств</div>
             </div>
         </div>
 
